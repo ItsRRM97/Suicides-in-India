@@ -12,7 +12,7 @@ maxSuicideAgeGroup <- function(Dataset)
   for(i in 1:236583) {
     for(j in 1:6) {
       if(Dataset$Age_group[i] == age_group[j,"age_group_levels"]) {
-        age_group[j,"no_of_suicides"] = age_group[j,"no_of_suicides"]+1
+        age_group[j,"no_of_suicides"] = age_group[j,"no_of_suicides"]+Dataset$Total[i]
       }
     }
   }
