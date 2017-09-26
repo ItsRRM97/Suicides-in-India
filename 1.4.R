@@ -1,6 +1,6 @@
 # Age_group wise total no of suicides
 
-maxSuicideAgeGroup <- function(Dataset)
+SuicideAgeGroup <- function(Dataset)
 {
   age_group_levels <- unique(Dataset$Age_group)
   age_group_names <- c("Unknown","Children","Teenagers","Middle-Aged Adult","Older Adults","Senior Citizens")
