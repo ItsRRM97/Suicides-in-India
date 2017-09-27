@@ -1,4 +1,4 @@
-# year wise causeus of suicide
+# year wise causes of suicide
 
 yearCause <- function(Dataset) {
   
