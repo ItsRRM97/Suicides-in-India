@@ -1,6 +1,6 @@
-# gender wise causes of suicide
+# age wise cause of suicide
 
-genderCause <- function(Dataset) {
+ageCause <- function(Dataset) {
   
   cause <- vector() # Null Vector
   Dataset$Type_code <- as.character(Dataset$Type_code)
@@ -13,18 +13,18 @@ genderCause <- function(Dataset) {
   cause <- unique(cause)
   cause <- sort(cause)
   
-  gender <- c('Male','Female')
+  age <- c(unique(as.character((Dataset$Age_group))))
   
-  mat <- matrix(0, nrow = 2, ncol = length(cause))
-  dimnames(mat) <- list(gender,1:length(cause))
+  mat <- matrix(0, nrow = length(age), ncol = length(cause))
+  dimnames(mat) <- list(age,1:length(cause))
   
   #making a legend for readability
   legend <- data.frame(cause)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Causes') {
-      for(j in 1:2) {
-        if(Dataset$Gender[i] == gender[j]) {
+      for(j in 1:length(age)) {
+        if(Dataset$Age_group[i] == age[j]) {
           for(k in 1:length(cause)) {
             if(Dataset$Type[i] == cause[k]) {
               mat[j,k] = mat[j,k] + Dataset$Total[i]
