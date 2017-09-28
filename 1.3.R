@@ -2,7 +2,7 @@
 
 SuicideGender <- function(Dataset)
 {
-  gender <- unique(as.character(Dataset$Gender))
+  gender <- c('Female','Male')
   
   mat <- matrix(0, nrow = length(gender), ncol = 1)
   dimnames(mat) <- list(gender)
