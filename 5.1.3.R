@@ -16,10 +16,10 @@ ageProfile <- function(Dataset) {
   age <- c(sort(unique(as.character((Dataset$Age_group)))))
   
   mat <- matrix(0, nrow = length(age), ncol = length(profile))
-  dimnames(mat) <- list(age,1:length(profile))
+  dimnames(mat) <- list(age,profile)
   
   #making a legend for readability
-  legend <- data.frame(list(1:length(profile)),profile)
+  #legend <- data.frame(list(1:length(profile)),profile)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Professional_Profile') {
@@ -34,6 +34,6 @@ ageProfile <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/5.1.3.csv", row.names = TRUE, col.name = TRUE, sep = ",")
+  #print(legend)
 }

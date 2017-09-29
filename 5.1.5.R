@@ -16,10 +16,10 @@ ageEducation <- function(Dataset) {
   age <- c(sort(unique(as.character((Dataset$Age_group)))))
   
   mat <- matrix(0, nrow = length(age), ncol = length(edu_stat))
-  dimnames(mat) <- list(age,1:length(edu_stat))
+  dimnames(mat) <- list(age,edu_stat)
   
   #making a legend for readability
-  legend <- data.frame(list(1:length(edu_stat)),edu_stat)
+  #legend <- data.frame(list(1:length(edu_stat)),edu_stat)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Education_Status') {
@@ -34,6 +34,6 @@ ageEducation <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/5.1.5.csv", row.names = TRUE, col.name = TRUE, sep = ",")
+  #print(legend)
 }
