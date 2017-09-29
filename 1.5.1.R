@@ -28,5 +28,5 @@ suicideCause <- function(Dataset)
       }
     }
   }
-  print(cause_wise)
+  write.table(cause_wise,"output/1.5.1.csv", row.names = FALSE, sep = ",")
 }

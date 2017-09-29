@@ -14,5 +14,5 @@ SuicideGender <- function(Dataset)
       mat[Dataset$Gender[i]] = mat[Dataset$Gender[i]] + Dataset$Total[i] 
     }
   }
-  print(mat)
+  write.table(mat,"output/1.3.csv", row.names = TRUE, sep = ",")
 }

@@ -16,5 +16,5 @@ SuicideState <- function(Dataset)
       mat[Dataset$State[i]] = mat[Dataset$State[i]] + Dataset$Total[i] 
     }
   }
-  print(mat)
+  write.table(mat,"output/1.2.csv", row.names = TRUE, sep = ",")
 }

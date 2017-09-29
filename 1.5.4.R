@@ -28,5 +28,5 @@ suicideStatus <- function(Dataset)
       }
     }
   }
-  print(status_wise)
+  write.table(status_wise,"output/1.5.4.csv", row.names = FALSE, sep = ",")
 }

@@ -28,5 +28,5 @@ suicideProfiles <- function(Dataset)
       }
     }
   }
-  print(profile_wise)
+  write.table(profile_wise,"output/1.5.3.csv", row.names = FALSE, sep = ",")
 }

@@ -15,5 +15,5 @@ SuicideYearly <- function(Dataset)
       }
     }
   }
-  print(frame)
+  write.table(frame,"output/1.1.csv", row.names = TRUE, sep = ",")
 }

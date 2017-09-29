@@ -16,5 +16,5 @@ SuicideAgeGroup <- function(Dataset)
       }
     }
   }
-  print(age_group)
+  write.table(age_group,"output/1.4.csv", row.names = FALSE, sep = ",")
 }

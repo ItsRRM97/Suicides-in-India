@@ -28,5 +28,5 @@ suicideMeans <- function(Dataset)
       }
     }
   }
-  print(means_adopted_wise)
+  write.table(means_adopted_wise,"output/1.5.2.csv", row.names = FALSE, sep = ",")
 }
