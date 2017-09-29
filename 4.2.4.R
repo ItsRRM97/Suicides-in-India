@@ -34,6 +34,6 @@ genderSocial <- function(Dataset) {
       }
     }
   }
-  print(mat)
+  write.table(mat,"output/4.2.4.csv", row.names = TRUE, col.name = TRUE, sep = ",")
   #print(legend)
 }

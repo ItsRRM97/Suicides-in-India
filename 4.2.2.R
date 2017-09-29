@@ -16,10 +16,10 @@ genderMeans <- function(Dataset) {
   gender <- c('Male','Female')
   
   mat <- matrix(0, nrow = 2, ncol = length(means))
-  dimnames(mat) <- list(gender,1:length(means))
+  dimnames(mat) <- list(gender,means)
   
   #making a legend for readability
-  legend <- data.frame(list(1:length(means)),means)
+  #legend <- data.frame(list(1:length(means)),means)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Means_adopted') {
@@ -34,6 +34,6 @@ genderMeans <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/4.2.2.csv", row.names = TRUE, col.name = TRUE, sep = ",")
+  #print(legend)
 }

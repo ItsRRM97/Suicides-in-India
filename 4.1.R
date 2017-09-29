@@ -23,5 +23,5 @@ genderAgeSuicide <- function(Dataset) {
       }
     }
   }
-  print(mat)
+  write.table(mat,"output/4.1.csv", row.names = TRUE, col.name = TRUE, sep = ",")
 }

@@ -16,10 +16,10 @@ genderCause <- function(Dataset) {
   gender <- c('Male','Female')
   
   mat <- matrix(0, nrow = 2, ncol = length(cause))
-  dimnames(mat) <- list(gender,1:length(cause))
+  dimnames(mat) <- list(gender,cause)
   
   #making a legend for readability
-  legend <- data.frame(cause)
+  #legend <- data.frame(cause)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Causes') {
@@ -34,6 +34,6 @@ genderCause <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/4.2.1.csv", row.names = TRUE, col.name = TRUE, sep = ",")
+  #print(legend)
 }
