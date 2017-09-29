@@ -16,10 +16,10 @@ yearCause <- function(Dataset) {
   year <- c(unique(as.character((Dataset$Year))))
   
   mat <- matrix(0, nrow = length(year), ncol = length(cause))
-  dimnames(mat) <- list(year,1:length(cause))
+  dimnames(mat) <- list(year,cause)
   
   #making a legend for readability
-  legend <- data.frame(list(1:length(cause)),cause)
+  #legend <- data.frame(list(1:length(cause)),cause)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Causes') {
@@ -34,6 +34,6 @@ yearCause <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/3.3.1.csv", row.names = TRUE, col.name = TRUE, sep = ",")
+  #print(legend)
 }

@@ -34,6 +34,6 @@ yearSocial <- function(Dataset) {
       }
     }
   }
-  print(mat)
+  write.table(mat,"output/3.3.4.csv", row.names = TRUE, col.name = TRUE, sep = ",")
   #print(legend)
 }
