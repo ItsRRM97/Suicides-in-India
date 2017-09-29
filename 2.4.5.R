@@ -16,10 +16,10 @@ stateEducation <- function(Dataset) {
   state <- c(unique(as.character((Dataset$State))))
   
   mat <- matrix(0, nrow = length(state), ncol = length(edu_stat))
-  dimnames(mat) <- list(state,1:length(edu_stat))
+  dimnames(mat) <- list(state,edu_stat)
   
   #making a legend for readability
-  legend <- data.frame(list(1:length(edu_stat)),edu_stat)
+  #legend <- data.frame(list(1:length(edu_stat)),edu_stat)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Education_Status') {
@@ -34,6 +34,6 @@ stateEducation <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/2.4.5.csv", row.names = TRUE, col.name = TRUE, sep = ",")
+  #print(legend)
 }

@@ -16,10 +16,10 @@ stateMeans <- function(Dataset) {
   state <- c(unique(as.character((Dataset$State))))
   
   mat <- matrix(0, nrow = length(state), ncol = length(means_adopted))
-  dimnames(mat) <- list(state,1:length(means_adopted))
+  dimnames(mat) <- list(state,means_adopted)
   
   #making a legend for improving readability
-  legend <- data.frame(list(1:length(means_adopted)),means_adopted)
+  #legend <- data.frame(list(1:length(means_adopted)),means_adopted)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Means_adopted') {
@@ -34,6 +34,6 @@ stateMeans <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/2.4.2.csv", row.names = TRUE, col.name = TRUE, sep = ",")
+  #print(legend)
 }

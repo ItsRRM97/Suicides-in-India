@@ -16,10 +16,10 @@ stateProfile <- function(Dataset) {
   state <- c(unique(as.character((Dataset$State))))
   
   mat <- matrix(0, nrow = length(state), ncol = length(profile))
-  dimnames(mat) <- list(state,1:length(profile))
+  dimnames(mat) <- list(state,profile)
   
   #making a legend for readability
-  legend <- data.frame(list(1:length(profile)),profile)
+  #legend <- data.frame(list(1:length(profile)),profile)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Professional_Profile') {
@@ -34,6 +34,6 @@ stateProfile <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/2.4.3.csv", row.names = TRUE, col.name = TRUE, sep = ",")
+  #print(legend)
 }

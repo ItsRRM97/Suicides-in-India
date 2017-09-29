@@ -16,10 +16,10 @@ stateCause <- function(Dataset) {
   state <- c(unique(as.character((Dataset$State))))
   
   mat <- matrix(0, nrow = length(state), ncol = length(cause))
-  dimnames(mat) <- list(state,1:length(cause))
+  dimnames(mat) <- list(state,cause)
   
   #making a legend for readability
-  legend <- data.frame(list(1:length(cause)),cause)
+  #legend <- data.frame(list(1:length(cause)),cause)
   
   for(i in 1:236583) {
     if(Dataset$Total[i] != 0 && Dataset$Type_code[i] == 'Causes') {
@@ -34,6 +34,5 @@ stateCause <- function(Dataset) {
       }
     }
   }
-  print(mat)
-  print(legend)
+  write.table(mat,"output/2.4.1.csv", row.names = TRUE, col.name = TRUE, sep = ",")
 }
