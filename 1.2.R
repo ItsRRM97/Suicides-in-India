@@ -17,4 +17,8 @@ SuicideState <- function(Dataset)
     }
   }
   write.table(mat,"output/1.2.csv", row.names = TRUE, sep = ",")
+  
+  png(file = "plots/state_wise_suicide.png")
+  barplot(mat)
+  dev.off()
 }
