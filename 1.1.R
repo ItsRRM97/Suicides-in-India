@@ -17,10 +17,10 @@ SuicideYearly <- function(Dataset)
   }
   write.table(frame,"output/1.1.csv", row.names = TRUE, sep = ",")
   
-  # bar graphS
+  # line graphS
   
   png(file = "plots/yearly_suicides.png")
-  barplot(frame$no_of_suicides/100000,names.arg = year,xlab = "Years",ylab = "Suicides(in lakhs)",col = "blue",
+  plot(frame$no_of_suicides/500000,type = "l",xlab = "Years(from 2000 to 2012)",ylab = "Suicides(in lakhs)",col = "blue",
           main = "Suicides over the Years")
   dev.off()
 }

@@ -2,6 +2,7 @@
 
 SuicideState <- function(Dataset)
 {
+  library(ggplot2)
   state <- unique(as.character(Dataset$State))
   no_of_suicides <- vector(mode="integer", length=length(state))
   state <- sort(state)
@@ -12,13 +13,21 @@ SuicideState <- function(Dataset)
   # problem solving
   
   for(i in 1:236583) {
-    if(Dataset$Total[i] != 0) {
+    if(Dataset$Type_code[i] == 'Causes' && Dataset$Total[i] != 0) {
       mat[Dataset$State[i]] = mat[Dataset$State[i]] + Dataset$Total[i] 
     }
   }
   write.table(mat,"output/1.2.csv", row.names = TRUE, sep = ",")
   
-  png(file = "plots/state_wise_suicide.png")
-  barplot(mat)
+  # bar graph
+  
+  png("plots/Suicides_State.png")
+  plott <- data.frame(mat)
+  options(scipen=999)
+  g <- ggplot(plott, aes(x=state, y=plott)) + geom_bar(stat = "identity") + 
+    theme(legend.position="bottom",axis.text.x=element_text(angle=90)) +
+    xlab("States") + ylab("Suicide Count") +
+    ggtitle("Suicides in India from 2001 to 2012")
+  print(g)
   dev.off()
 }
