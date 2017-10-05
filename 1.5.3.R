@@ -29,4 +29,17 @@ suicideProfiles <- function(Dataset)
     }
   }
   write.table(profile_wise,"output/1.5.3.csv", row.names = FALSE, sep = ",")
+  
+  # bar graphs
+  library(ggplot2)
+  png("plots/Suicides_profile.png")
+  options(scipen=999)
+  g <- ggplot(data.frame(profile_wise$suicides), 
+              aes(x=profile_wise$profile, y=profile_wise$suicides, 
+                  fill=profile_wise$profile)) + geom_bar(stat = "identity") + 
+    theme(legend.position="bottom", axis.text.x=element_text(angle=90)) +
+    xlab("Professional Profile") + ylab("Suicide Count") +
+    ggtitle("Professials who committed Suicides in India from 2001 to 2012")
+  print(g)
+  dev.off()
 }

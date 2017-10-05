@@ -29,4 +29,17 @@ suicideMeans <- function(Dataset)
     }
   }
   write.table(means_adopted_wise,"output/1.5.2.csv", row.names = FALSE, sep = ",")
+  
+  # bar graph
+  
+  library(ggplot2)
+  png("plots/Suicides_means.png")
+  options(scipen=999)
+  g <- ggplot(data.frame(means_adopted_wise$suicides), 
+              aes(x=means_adopted_wise$means_adopted, y=means_adopted_wise$suicides,means_adopted_wise$suicidesfill=means_adopted_wise$means_adopted)) + geom_bar(stat = "identity") + 
+    theme(legend.position="none", axis.text.x=element_text(angle=90)) +
+    xlab("Means Adopted") + ylab("Suicide Count") +
+    ggtitle("Means Adopted for Suicides in India from 2001 to 2012")
+  print(g)
+  dev.off()
 }

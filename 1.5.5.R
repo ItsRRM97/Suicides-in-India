@@ -29,4 +29,17 @@ suicideEducation <- function(Dataset)
     }
   }
   write.table(edu_wise,"output/1.5.5.csv", row.names = FALSE, sep = ",")
+  
+  # bar graphs
+  library(ggplot2)
+  png("plots/Suicides_edu.png")
+  options(scipen=999)
+  g <- ggplot(data.frame(edu_wise$suicides), 
+              aes(x=edu_wise$edu, y=edu_wise$suicides, 
+                  fill=edu_wise$edu)) + geom_bar(stat = "identity") + 
+    theme(legend.position="bottom", axis.text.x=element_text(angle=90)) +
+    xlab("Educational Status") + ylab("Suicide Count") +
+    ggtitle("Educational Status of people who committed Suicides in India")
+  print(g)
+  dev.off()
 }

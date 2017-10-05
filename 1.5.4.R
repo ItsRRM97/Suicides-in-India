@@ -29,4 +29,17 @@ suicideStatus <- function(Dataset)
     }
   }
   write.table(status_wise,"output/1.5.4.csv", row.names = FALSE, sep = ",")
+  
+  # bar graphs
+  library(ggplot2)
+  png("plots/Suicides_social.png")
+  options(scipen=999)
+  g <- ggplot(data.frame(status_wise$suicides), 
+              aes(x=status_wise$status, y=status_wise$suicides, 
+                  fill=status_wise$status)) + geom_bar(stat = "identity") + 
+    theme(legend.position="bottom", axis.text.x=element_text(angle=90)) +
+    xlab("Social Status") + ylab("Suicide Count") +
+    ggtitle("Social Status of people who committed Suicides in India from 2001-2012")
+  print(g)
+  dev.off()
 }

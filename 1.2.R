@@ -24,10 +24,10 @@ SuicideState <- function(Dataset)
   png("plots/Suicides_State.png")
   plott <- data.frame(mat)
   options(scipen=999)
-  g <- ggplot(plott, aes(x=state, y=plott)) + geom_bar(stat = "identity") + 
-    theme(legend.position="bottom",axis.text.x=element_text(angle=90)) +
+  g <- ggplot(plott, aes(x=state, y=plott, fill=state)) + geom_bar(stat = "identity") + 
+    theme(legend.position="bottom", legend.text=element_text(size=5, face ="bold"), axis.text.x=element_text(angle=90)) +
     xlab("States") + ylab("Suicide Count") +
-    ggtitle("Suicides in India from 2001 to 2012")
+    ggtitle("Suicides in India from 2001 to 2012 by State")
   print(g)
   dev.off()
 }
